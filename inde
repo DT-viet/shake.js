@@ -1,0 +1,42 @@
+
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet"  type="text/css"	href="/shake.css">
+		<script type="text/javascript" src="https://cdn.rawgit.com/alexgibson/shake.js/master/shake.js"></script>
+		<script type="text/javascript">
+			function getRandomInt(min, max) {
+			  return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+
+			var shakeEvent = new Shake({threshold: 15});
+			shakeEvent.start();
+			window.addEventListener('shake', function(){
+				var element = document.getElementById("box");
+			    var r = getRandomInt(0, 255);
+			    var g = getRandomInt(0, 255);
+			    var b = getRandomInt(0, 255);
+
+			    element.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+			}, false);
+
+			//stop listening
+			function stopShake(){
+				shakeEvent.stop();
+			}
+
+			if(!("ondevicemotion" in window)){alert("Not Supported");}
+		</script>
+	</head>
+	<body>
+		Shake to change color of the box
+		<div id="box"></div>
+		<script type="text/javascript">
+			var element = document.getElementById("box");
+			var r = getRandomInt(0, 255);
+			var g = getRandomInt(0, 255);
+			var b = getRandomInt(0, 255);
+		    element.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
+		</script>
+	</body>
+</html>
